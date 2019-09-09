@@ -8,14 +8,21 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {HttpClientModule} from '@angular/common/http';
+import { DatosService } from '../app/services/datos.service';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [
     StatusBar,
+    DatosService,
     SplashScreen,
+    Geolocation,
+    NativeGeocoder,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DatosService } from '../services/datos.service';
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +8,15 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  proyectos
+  autores
 
+  constructor(public datos:DatosService) {}
+
+  ionViewDidEnter(){
+    this.datos.obtenerDatos().subscribe(
+      (data)=> {this.proyectos = data.agenda;},
+      (error)=>{console.log(error);}
+    );
+  }
 }

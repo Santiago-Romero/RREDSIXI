@@ -1,9 +1,17 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+      Posters
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+    <ion-card expand="full" *ngFor="let proyecto of proyectos">
+      <ion-card-header>
+          <ion-card-title>{{proyecto.trabajo.titulo}}</ion-card-title>
+          <ion-card-subtitle><p *ngFor="let autor of proyecto.autores">{{autor.nombres}} <br> </p></ion-card-subtitle>
+          <ion-card-content>{{proyecto.hora}} <br> {{proyecto.campus}} - {{proyecto.espacio}} <br> {{proyecto.trabajo.tipo}} <br> {{proyecto.trabajo.semillero}} <br> {{proyecto.trabajo.sede}} </ion-card-content>
+      </ion-card-header>
+    </ion-card> 
+</ion-content>

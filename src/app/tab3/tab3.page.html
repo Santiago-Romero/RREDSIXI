@@ -1,9 +1,27 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Three
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content></ion-content>
+    <ion-row>
+      <ion-col text-start padding-top>
+        <ion-title>Mapas de Google</ion-title>
+      </ion-col>
+      <ion-col text-end>
+        <ion-button (click)="loadMap()" shape="round" fill="outline">
+          <ion-icon slot="start" name="locate"></ion-icon>
+          Ubicar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-header>
+  <ion-content>
+   
+    <div class="map-wrapper">
+      <div id="map_center">
+        <img src="../../assets/icon/center_marker.png" />
+      </div>
+      <div #map id="map"></div>
+    </div>
+    <div id="address">
+      <span>{{address}}</span>
+    </div>
+   
+   
+  </ion-content>
