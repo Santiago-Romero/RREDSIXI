@@ -15,7 +15,7 @@ export class Tab1Page {
 
   ionViewDidEnter(){
     this.datos.obtenerDatos().subscribe(
-      (data)=> {this.proyectos = data.agenda;},
+      (data)=> {this.proyectos = data['agenda'];},
       (error)=>{console.log(error);}
     );
   }
