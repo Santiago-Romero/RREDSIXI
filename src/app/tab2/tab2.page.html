@@ -7,21 +7,30 @@
 </ion-header>
 
 <ion-content>
-  <ion-select placeholder="Buscar por">
-    <ion-select-option value="evaluador">Evaluador</ion-select-option>
-    <ion-select-option value="ies">IES</ion-select-option>
-    <ion-select-option value="autor">Autor</ion-select-option>
-    <ion-select-option value="area">Area</ion-select-option>
-    <ion-select-option value="propuesta">Propuesta</ion-select-option>
-  </ion-select>
-  <ion-col fixed>
-    <ion-searchbar></ion-searchbar>
-  </ion-col>
+    <ion-grid>
+        <ion-row>
+          <ion-col>
+            Filtros:
+          </ion-col>
+          <ion-col>
+              <ion-select #combo placeholder="Buscar por" value="proyecto">
+                  <ion-select-option value="evaluador">Evaluador</ion-select-option>
+                  <ion-select-option value="ies">IES</ion-select-option>
+                  <ion-select-option value="autor">Autor</ion-select-option>
+                  <ion-select-option value="area">Campus</ion-select-option>
+                  <ion-select-option value="proyecto">Propuestas</ion-select-option>
+                </ion-select>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  
+    <ion-searchbar #q (keyup.enter)="filtro(q.value,combo.value)"></ion-searchbar>
+  <div *ngIf="hideMe">
   <ion-card color="light" expand="full" *ngFor="let proyecto of proyectos">
     <ion-card-header>
       <ion-card-title>{{proyecto.trabajo.titulo}}</ion-card-title>
       <ion-card-subtitle>
-        <p *ngFor="let autor of proyecto.autores">{{autor.nombres}} <br> </p>
+        <p *ngFor="let autor of proyecto.autores">{{autor.nombres}} {{autor.apellidos}} <br> </p>
       </ion-card-subtitle>
       <ion-card-content>
         <ion-badge color="success">{{proyecto.hora}}</ion-badge> <br>
@@ -30,4 +39,26 @@
       </ion-card-content>
     </ion-card-header>
   </ion-card>
+  </div>
+  <div *ngIf="hideMe2">
+    <ion-card color="light" expand="full" *ngFor="let proyecto of proyectosFiltro">
+    <ion-card-header>
+      <ion-card-title>{{proyecto.trabajo.titulo}}</ion-card-title>
+      <ion-card-subtitle>
+        <p *ngFor="let autor of proyecto.autores">{{autor.nombres}} {{autor.apellidos}} <br> </p>
+      </ion-card-subtitle>
+      <ion-card-content>
+        <ion-badge color="success">{{proyecto.hora}}</ion-badge> <br>
+        <ion-badge color="medium">{{proyecto.campus}} - {{proyecto.espacio}}</ion-badge> <br> {{proyecto.trabajo.tipo}}
+        <br> {{proyecto.trabajo.semillero}} <br> {{proyecto.trabajo.sede}}
+      </ion-card-content>
+    </ion-card-header>  
+  </ion-card>
+</div>
+<div *ngIf="hideMe3">
+  <p>No se encotró busqueda</p>
+<ion-button (click)="ionViewDidEnter()">
+Mostrar Todos
+</ion-button>
+</div>
 </ion-content>
