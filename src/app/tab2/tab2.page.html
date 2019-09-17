@@ -24,7 +24,7 @@
         </ion-row>
       </ion-grid>
   
-    <ion-searchbar #q (keyup.enter)="filtro(q.value,combo.value)"></ion-searchbar>
+    <ion-searchbar #q (keyup)="filtro(q.value,combo.value)"></ion-searchbar>
   <div *ngIf="hideMe">
   <ion-card color="light" expand="full" *ngFor="let proyecto of proyectos">
     <ion-card-header>
