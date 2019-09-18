@@ -17,4 +17,10 @@ export class DatosService {
     //// MIO
     return this.http.get('http://www.mocky.io/v2/5d79ccc8320000520034eae3');
   }
+  obtenerDatos2(){
+    //// DEL PROFESOR
+    ///return this.http.get('http://www.mocky.io/v2/5d6addff3100006000d2077c');
+    //// MIO2
+    return this.http.get('http://www.mocky.io/v2/5d828e913400006900f4a03c');
+  }
 }

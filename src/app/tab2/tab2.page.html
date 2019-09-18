@@ -33,9 +33,9 @@
         <p *ngFor="let autor of proyecto.autores">{{autor.nombres}} {{autor.apellidos}} <br> </p>
       </ion-card-subtitle>
       <ion-card-content>
-        <ion-badge color="success">{{proyecto.hora}}</ion-badge> <br>
-        <ion-badge color="medium">{{proyecto.campus}} - {{proyecto.espacio}}</ion-badge> <br> {{proyecto.trabajo.tipo}}
-        <br> {{proyecto.trabajo.semillero}} <br> {{proyecto.trabajo.sede}}
+        <ion-badge color="tertiary">{{proyecto.trabajo.semillero}}</ion-badge> <br>
+        <ion-badge color="medium">{{proyecto.campus}}</ion-badge> <br> {{proyecto.trabajo.tipo}}
+        <br> {{proyecto.trabajo.sede}}
       </ion-card-content>
     </ion-card-header>
   </ion-card>

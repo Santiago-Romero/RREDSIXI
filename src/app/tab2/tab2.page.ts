@@ -21,7 +21,7 @@ export class Tab2Page {
     this.hideMe=true;
     this.hideMe2=false;
     this.hideMe3=false;
-    this.datos.obtenerDatos().subscribe(
+    this.datos.obtenerDatos2().subscribe(
       (data)=> {this.proyectos = data['agenda'];},
       (error)=>{console.log(error);}
     );
@@ -33,7 +33,7 @@ export class Tab2Page {
     this.hideMe = false;
     this.hideMe2 = true;
     this.hideMe3= false;
-    this.datos.obtenerDatos().subscribe(
+    this.datos.obtenerDatos2().subscribe(
       (data)=> {this.proyectos = data['agenda'];},
       (error)=>{console.log(error);}
     );
