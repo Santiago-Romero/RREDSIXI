@@ -29,6 +29,12 @@ export class Tab1Page {
   }
 
   filtro(q: string,combo: string){
+
+    var even = function(autores) {
+      // checks whether an element is even
+      return autores.nombres === q;
+    };
+
     this.proyectosFiltro=[]
     this.losQueVan=[]
     this.hideMe = false;
@@ -41,9 +47,11 @@ export class Tab1Page {
     if(combo=='evaluador'){
       this.elFiltroAutor(q);
     }else if(combo=='ies'){
-      this.elFiltroTrabajo(q,'sede');
+      // this.elFiltroTrabajo(q,'sede');
+      this.proyectosFiltro = this.proyectos.filter(proyecto => proyecto.trabajo.sede.toLowerCase() === q.toLowerCase());
     }else if(combo=='autor'){
       this.elFiltroAutor(q);
+      this.proyectosFiltro = this.proyectos.filter(proyecto => proyecto.autores.some(even))
     }else if(combo=='area'){
       this.proyectosFiltro = this.getFilteredByKey(this.proyectos, "campus", q.toLowerCase());
     }else{
