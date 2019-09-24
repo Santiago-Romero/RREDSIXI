@@ -32,7 +32,7 @@ export class Tab1Page {
 
     var even = function(autores) {
       // checks whether an element is even
-      return autores.nombres === q;
+      return autores.nombres.toLowerCase() === q.toLowerCase();
     };
 
     this.proyectosFiltro=[]
