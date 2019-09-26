@@ -32,7 +32,8 @@ export class Tab1Page {
 
     var even = function(autores) {
       // checks whether an element is even
-      return autores.nombres.toLowerCase() === q.toLowerCase();
+      //return autores.nombres.toLowerCase() === q.toLowerCase();
+      return autores.nombres.toLowerCase().includes(q.toLowerCase());
     };
 
     this.proyectosFiltro=[]
@@ -45,12 +46,13 @@ export class Tab1Page {
       (error)=>{console.log(error);}
     );
     if(combo=='evaluador'){
-      this.elFiltroAutor(q);
+      //this.elFiltroAutor(q);
+      this.proyectosFiltro = this.proyectos.filter(proyecto => proyecto.autores.some(even))
     }else if(combo=='ies'){
       // this.elFiltroTrabajo(q,'sede');
-      this.proyectosFiltro = this.proyectos.filter(proyecto => proyecto.trabajo.sede.toLowerCase() === q.toLowerCase());
+      this.proyectosFiltro = this.proyectos.filter(proyecto => proyecto.trabajo.sede.toLowerCase().includes(q.toLowerCase()));
     }else if(combo=='autor'){
-      this.elFiltroAutor(q);
+      //this.elFiltroAutor(q);
       this.proyectosFiltro = this.proyectos.filter(proyecto => proyecto.autores.some(even))
     }else if(combo=='area'){
       this.proyectosFiltro = this.getFilteredByKey(this.proyectos, "campus", q.toLowerCase());
@@ -62,23 +64,22 @@ export class Tab1Page {
     }
   }
 
-  elFiltroAutor(q:String){
-    for(var i=0;i<this.proyectos.length;i++){
-      for(var j=0;j<this.proyectos[i].autores.length;j++){
-        if(this.proyectos[i].autores[j].nombres.toLowerCase()==q.toLowerCase()){
-          this.losQueVan.push(i)
-        }
-      }
-    }
-    for(var x=0;x<this.losQueVan.length;x++){
-      this.proyectosFiltro.push(this.proyectos[this.losQueVan[x]])
-    }
-  }
+  // elFiltroAutor(q:String){
+  //   for(var i=0;i<this.proyectos.length;i++){
+  //     for(var j=0;j<this.proyectos[i].autores.length;j++){
+  //       if(this.proyectos[i].autores[j].nombres.toLowerCase()==q.toLowerCase()){
+  //         this.losQueVan.push(i)
+  //       }
+  //     }
+  //   }
+  //   for(var x=0;x<this.losQueVan.length;x++){
+  //     this.proyectosFiltro.push(this.proyectos[this.losQueVan[x]])
+  //   }
+  // }
 
   elFiltroTrabajo(q:String,sub){
     for(var i=0;i<this.proyectos.length;i++){
-      console.log(this.proyectos[i].trabajo[sub]+" === "+q)
-        if(this.proyectos[i].trabajo[sub].toLowerCase()==q.toLowerCase()){
+        if(this.proyectos[i].trabajo[sub].toLowerCase().includes(q.toLowerCase())){
           this.losQueVan.push(i)
         }
     }
@@ -88,7 +89,7 @@ export class Tab1Page {
   }
   getFilteredByKey(array, key, value) {
     return array.filter(function(e) {
-      return e[key.toLowerCase()].toLowerCase() == value.toLowerCase();
+      return e[key.toLowerCase()].toLowerCase().includes(value.toLowerCase());
     });
   }
 
